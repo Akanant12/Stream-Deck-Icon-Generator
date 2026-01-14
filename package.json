@@ -1,0 +1,17 @@
+{
+  "name": "streamdeck-icon-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stream Deck Icon Generator with gradient backgrounds",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "streamdeck",
+    "icon-generator",
+    "gradient"
+  ],
+  "author": "SyntaxSidekick",
+  "license": "MIT"
+}
