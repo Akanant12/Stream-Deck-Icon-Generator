@@ -26,12 +26,14 @@ export async function initIconPicker() {
     modal.dataset.open = "false";
     modal.setAttribute("aria-hidden", "true");
     
-    // Only remove body scroll lock on desktop
-    if (!isMobile()) {
-      document.body.style.removeProperty('overflow');
-      document.body.style.removeProperty('position');
-      document.body.style.removeProperty('top');
-      document.body.style.removeProperty('width');
+    // Always remove body scroll lock styles (in case they were applied)
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    document.body.style.removeProperty('width');
+    
+    // Restore scroll position on desktop
+    if (!isMobile() && scrollPosition > 0) {
       window.scrollTo(0, scrollPosition);
     }
     
