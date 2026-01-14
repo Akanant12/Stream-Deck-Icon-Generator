@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stream Deck Icon Generator</title>
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/modal.css" />
+  </head>
+
+  <body>
+    <div class="shell">
+      <div class="topbar">
+        <div class="brand">
+          <h1>Stream Deck Icon Generator</h1>
+          <p>Pick an SVG, tune a gradient, export a Stream Deck-ready PNG.</p>
+        </div>
+
+        <div class="pillrow">
+          <div class="pill"><span class="dot"></span> Local SVGs</div>
+          <div class="pill">Canvas Preview</div>
+          <div class="pill">PNG Export</div>
+          <div class="pill kbd">Ctrl+I Open Icons</div>
+          <div class="pill kbd">Ctrl+E Export</div>
+          <div class="pill kbd">Arrows Adjust</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- LEFT: Controls -->
+        <div class="panel">
+          <div class="panelHead">
+            <h2>Controls</h2>
+            <button class="btn small ghost" type="button" id="resetAll">
+              Reset
+            </button>
+          </div>
+
+          <div class="panelBody">
+            <!-- Icon -->
+            <div class="section">
+              <div class="sectionTitle">
+                <h3>Icon</h3>
+                <span>Local SVGs</span>
+              </div>
+
+              <div class="iconPick">
+                <div class="iconPreview" id="smallIconPreview"></div>
+
+                <div class="iconMeta">
+                  <strong id="selectedIconName">None selected</strong>
+                  <span id="selectedIconHint">Click “Choose Icon”</span>
+                </div>
+
+                <button class="btn" type="button" id="openIconPicker">
+                  Choose Icon
+                </button>
+              </div>
+
+              <div class="twocol">
+                <div class="field">
+                  <span class="label">Icon color</span>
+                  <div class="row">
+                    <input
+                      class="color"
+                      type="color"
+                      id="iconColor"
+                      value="#ffffff"
+                      title="Pick icon color"
+                    />
+                    <input
+                      class="input"
+                      type="text"
+                      id="iconColorHex"
+                      value="#ffffff"
+                      placeholder="#ffffff"
+                      title="Enter hex color"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <span class="label">Icon size <span id="iconSizeValue">44%</span></span>
+                  <input
+                    class="range"
+                    type="range"
+                    id="iconSize"
+                    min="20"
+                    max="80"
+                    value="44"
+                    title="Adjust icon size"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="label">Vertical offset <span id="iconOffsetValue">0%</span></span>
+                <input
+                  class="range"
+                  type="range"
+                  id="iconOffset"
+                  min="-30"
+                  max="30"
+                  value="0"
+                  title="Adjust vertical position"
+                />
+              </div>
+            </div>
+
+            <!-- Background / Gradient -->
+            <div class="section">
+              <div class="sectionTitle">
+                <h3>Background</h3>
+                <span>Gradient</span>
+              </div>
+
+              <div class="field">
+                <span class="label">Presets</span>
+                <div class="row">
+                  <select class="select" id="presetSelect" style="flex: 1;">
+                    <option value="">Custom...</option>
+                  </select>
+                  <button class="btn small ghost" type="button" id="savePreset" title="Save current gradient as preset">
+                    💾
+                  </button>
+                  <button class="btn small ghost" type="button" id="deletePreset" title="Delete selected preset">
+                    🗑️
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="label">Gradient preview (drag stops)</span>
+                <div class="gradBar" id="gradBar"></div>
+              </div>
+
+              <div class="field">
+                <span class="label">Random base color (optional)</span>
+                <div class="row">
+                  <input
+                    class="color"
+                    type="color"
+                    id="randomBaseColor"
+                    value="#667eea"
+                    title="Base color for randomization"
+                  />
+                  <input
+                    class="input"
+                    type="text"
+                    id="randomBaseColorHex"
+                    value="#667eea"
+                    placeholder="#667eea"
+                    title="Base color hex"
+                  />
+                  <button class="btn small ghost" type="button" id="clearBaseColor" title="Clear base color">
+                    ✕
+                  </button>
+                </div>
+              </div>
+
+              <button class="btn ghost" type="button" id="randomizeGradient" style="width: 100%;">
+                🎲 Randomize Gradient
+              </button>
+
+              <div class="split">
+                <div class="chipgroup" id="gradientType">
+                  <button class="chip active" type="button" data-type="linear">
+                    Linear
+                  </button>
+                  <button class="chip" type="button" data-type="radial">
+                    Radial
+                  </button>
+                </div>
+
+                <div class="row">
+                  <button class="btn small ghost" type="button" id="addStop">
+                    Add stop
+                  </button>
+                  <button class="btn small ghost" type="button" id="removeStop">
+                    Remove stop
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="label">Gradient style</span>
+                <div class="chipgroup" id="gradientStyle">
+                  <button class="chip" type="button" data-style="smooth" title="Smooth transition">
+                    Smooth
+                  </button>
+                  <button class="chip" type="button" data-style="glossy" title="Glossy highlight effect">
+                    Glossy
+                  </button>
+                  <button class="chip" type="button" data-style="vibrant" title="Bold, vibrant colors">
+                    Vibrant
+                  </button>
+                  <button class="chip" type="button" data-style="subtle" title="Soft, subtle blend">
+                    Subtle
+                  </button>
+                </div>
+              </div>
+
+              <div class="field" id="angleField">
+                <span class="label">Angle (linear only)</span>
+                <input
+                  class="range"
+                  type="range"
+                  id="angle"
+                  min="0"
+                  max="360"
+                  value="135"
+                />
+              </div>
+
+              <div class="twocol">
+                <div class="field">
+                  <span class="label">Active stop color</span>
+                  <div class="row">
+                    <input
+                      class="color"
+                      type="color"
+                      id="stopColor"
+                      value="#ffb347"
+                    />
+                    <input
+                      class="input"
+                      type="text"
+                      id="stopColorHex"
+                      value="#ffb347"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <span class="label">Active stop position</span>
+                  <input
+                    class="range"
+                    type="range"
+                    id="stopPos"
+                    min="0"
+                    max="100"
+                    value="50"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Export -->
+            <div class="section">
+              <div class="sectionTitle">
+                <h3>Export</h3>
+                <span>PNG</span>
+              </div>
+
+              <div class="twocol">
+                <div class="field">
+                  <span class="label">Size</span>
+                  <select class="select" id="exportSize">
+                    <option value="72">72 × 72</option>
+                    <option value="144">144 × 144</option>
+                    <option value="256" selected>256 × 256</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <span class="label">Corner radius</span>
+                  <input
+                    class="range"
+                    type="range"
+                    id="radius"
+                    min="0"
+                    max="28"
+                    value="18"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <span class="label">Icon name</span>
+                <input
+                  class="input"
+                  type="text"
+                  id="iconNameInput"
+                  placeholder="e.g. github-gradient"
+                />
+              </div>
+
+              <button class="btn primary" type="button" id="exportBtn">
+                Export PNG
+              </button>
+              <div class="row">
+                <button class="btn ghost" type="button" id="batchExportBtn">
+                  Export All Sizes
+                </button>
+                <button class="btn ghost small" type="button" id="copyToClipboard" title="Copy to clipboard">
+                  📋 Copy
+                </button>
+              </div>
+              <p class="help" id="exportHint">
+                Exports current preview as PNG. Batch exports 72, 144, and 256 sizes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Preview -->
+        <div class="panel">
+          <div class="previewWrap">
+            <div class="previewHeader">
+              <h2>Preview</h2>
+              <div class="chipgroup" id="zoomGroup">
+                <button class="chip active" type="button" data-zoom="1">
+                  1× Actual
+                </button>
+
+                <button class="chip" type="button" data-zoom="4">4x</button>
+                <button class="chip" type="button" data-zoom="8">8x</button>
+              </div>
+            </div>
+
+            <div class="previewStage">
+              <div class="checker">
+                <div class="canvasWrap" id="canvasWrap">
+                  <canvas id="canvas" width="256" height="256"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="previewFooter">
+              <span>Preview: <strong id="previewLabel">256 × 256</strong></span>
+              <span class="kbd">Tip: export 256 → downscale</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Icon Picker -->
+    <div class="modal" data-open="false" aria-hidden="true" id="iconModal">
+      <div class="modalOverlay" id="iconModalOverlay"></div>
+
+      <div
+        class="modalDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Select Icon"
+      >
+        <div class="modalHead">
+          <h3>Select Icon</h3>
+          <div class="row">
+            <span class="kbd">Esc</span>
+            <button class="btn small ghost" type="button" id="closeIconPicker">
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div class="modalBody">
+          <div class="searchRow">
+            <input
+              class="input"
+              type="text"
+              id="iconSearch"
+              placeholder="Search (github, figma…)"
+              style="flex: 1"
+            />
+            <span class="help"
+              >Loaded from <code>/icons/fontawesome/index.json</code></span
+            >
+          </div>
+
+          <div class="iconLoadingIndicator" id="iconLoadingIndicator" style="display: none;">
+            <div class="spinner"></div>
+            <span>Loading icons...</span>
+          </div>
+
+          <div class="iconGrid" id="iconGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/js/app.js"></script>
+  </body>
+</html>
