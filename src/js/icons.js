@@ -1,7 +1,7 @@
 import { state } from "./state.js";
 import { renderAll, setSelectedIcon } from "./ui.js";
 
-const ICON_BASE = "/public/icons/fontawesome";
+const ICON_BASE = "./public/icons/fontawesome";
 
 // SVG cache to prevent re-fetching
 const svgCache = new Map();
