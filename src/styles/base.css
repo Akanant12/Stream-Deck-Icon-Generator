@@ -19,8 +19,9 @@
   outline-offset: 2px;
 }
 
-html,body{ height:100%; }
+html{ height:100%; }
 body{
+  min-height: 100%;
   margin:0;
   background:
     radial-gradient(ellipse 1400px 900px at 10% 0%, rgba(30, 30, 35, 0.95), transparent 50%),
